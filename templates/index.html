@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix Premium - Version 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Premium Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-play-circle logo-icon"></i>
+                <span class="logo-text">StreamFlix</span>
+                <span class="premium-badge">PREMIUM V2</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" class="nav-link" data-section="movies"><i class="fas fa-film"></i> Movies</a></li>
+                <li><a href="#" class="nav-link" data-section="tvshows"><i class="fas fa-tv"></i> TV Shows</a></li>
+                <li><a href="#" class="nav-link" data-section="mylist"><i class="fas fa-bookmark"></i> My List</a></li>
+                <li><a href="#" class="nav-link" data-section="kids"><i class="fas fa-child"></i> Kids</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search movies, shows...">
+                    <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="notification-btn"><i class="fas fa-bell"></i><span class="notification-badge">3</span></button>
+                <div class="profile-dropdown">
+                    <button class="profile-btn"><i class="fas fa-user-circle"></i></button>
+                    <div class="dropdown-menu">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background Effect -->
+    <section class="hero" id="hero">
+        <div class="hero-video-overlay"></div>
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i> #1 Trending Now
+            </div>
+            <h1 class="hero-title">Cyber Storm</h1>
+            <p class="hero-description">
+                In a world where technology controls everything, one hacker must fight against 
+                a corrupt AI system to save humanity. An action-packed thriller that will keep 
+                you on the edge of your seat.
+            </p>
+            <div class="hero-meta">
+                <span class="meta-item"><i class="fas fa-calendar"></i> 2024</span>
+                <span class="meta-item"><i class="fas fa-clock"></i> 2h 15m</span>
+                <span class="meta-item"><i class="fas fa-star"></i> 4.8</span>
+                <span class="meta-item age-rating">16+</span>
+            </div>
+            <div class="hero-buttons">
+                <button class="btn-play"><i class="fas fa-play"></i> Play Now</button>
+                <button class="btn-info"><i class="fas fa-info-circle"></i> More Info</button>
+                <button class="btn-add" id="addToList"><i class="fas fa-plus"></i></button>
+                <button class="btn-mute" id="muteBtn"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
+
+    <!-- Quick Categories -->
+    <section class="categories-section">
+        <div class="categories-container">
+            <button class="category-pill active"><i class="fas fa-fire"></i> All</button>
+            <button class="category-pill"><i class="fas fa-bolt"></i> Action</button>
+            <button class="category-pill"><i class="fas fa-heart"></i> Romance</button>
+            <button class="category-pill"><i class="fas fa-laugh"></i> Comedy</button>
+            <button class="category-pill"><i class="fas fa-ghost"></i> Horror</button>
+            <button class="category-pill"><i class="fas fa-rocket"></i> Sci-Fi</button>
+            <button class="category-pill"><i class="fas fa-masks-theater"></i> Drama</button>
+            <button class="category-pill"><i class="fas fa-hat-wizard"></i> Fantasy</button>
+        </div>
+    </section>
+
+    <!-- Trending Now Carousel -->
+    <section class="content-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-fire-alt"></i> Trending Now</h2>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" data-carousel="trending"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn" data-carousel="trending"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="carousel-wrapper">
+            <div class="movie-carousel" id="trending-carousel">
+                <div class="movie-card premium-card" data-id="1">
+                    <div class="card-poster gradient-1">
+                        <i class="fas fa-robot card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge trending">TOP 1</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.8</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Cyber Storm</h3>
+                        <p>Action • 2h 15m</p>
+                        <div class="card-progress"><div class="progress-bar" style="width: 65%"></div></div>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="2">
+                    <div class="card-poster gradient-2">
+                        <i class="fas fa-water card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge">TOP 2</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.6</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Ocean Mystery</h3>
+                        <p>Thriller • 1h 55m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="3">
+                    <div class="card-poster gradient-3">
+                        <i class="fas fa-meteor card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge">TOP 3</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Galaxy Warriors</h3>
+                        <p>Sci-Fi • 2h 30m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="4">
+                    <div class="card-poster gradient-4">
+                        <i class="fas fa-theater-masks card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge">TOP 4</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>The Last Dance</h3>
+                        <p>Drama • 2h 05m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="5">
+                    <div class="card-poster gradient-5">
+                        <i class="fas fa-heart card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge">TOP 5</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.5</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Midnight Sun</h3>
+                        <p>Romance • 1h 50m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="6">
+                    <div class="card-poster gradient-6">
+                        <i class="fas fa-bomb card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge">TOP 6</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.4</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Code Red</h3>
+                        <p>Action • 2h 10m</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Releases Section -->
+    <section class="content-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-sparkles"></i> New Releases</h2>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" data-carousel="newreleases"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn" data-carousel="newreleases"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="carousel-wrapper">
+            <div class="movie-carousel" id="newreleases-carousel">
+                <div class="movie-card premium-card" data-id="7">
+                    <div class="card-poster gradient-7">
+                        <i class="fas fa-user-secret card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge new">NEW</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Shadow Protocol</h3>
+                        <p>Spy • 2h 20m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="8">
+                    <div class="card-poster gradient-8">
+                        <i class="fas fa-mountain card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge new">NEW</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.3</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Wild Heart</h3>
+                        <p>Adventure • 1h 45m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="9">
+                    <div class="card-poster gradient-9">
+                        <i class="fas fa-vr-cardboard card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge new">NEW</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.8</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Digital Dreams</h3>
+                        <p>Sci-Fi • 2h 00m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="10">
+                    <div class="card-poster gradient-10">
+                        <i class="fas fa-users card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge new">NEW</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.2</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Family Reunion</h3>
+                        <p>Comedy • 1h 40m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="11">
+                    <div class="card-poster gradient-11">
+                        <i class="fas fa-skull card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge new">NEW</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.1</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Dark Waters</h3>
+                        <p>Horror • 1h 55m</p>
+                    </div>
+                </div>
+                <div class="movie-card premium-card" data-id="12">
+                    <div class="card-poster gradient-12">
+                        <i class="fas fa-car card-icon"></i>
+                        <div class="card-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <span class="card-badge new">NEW</span>
+                        <div class="card-rating"><i class="fas fa-star"></i> 4.6</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Speed Racer</h3>
+                        <p>Action • 2h 15m</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TV Shows Section -->
+    <section class="content-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-tv"></i> Popular TV Shows</h2>
+            <a href="#" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="tv-grid">
+            <div class="tv-card" data-id="13">
+                <div class="tv-poster gradient-13">
+                    <i class="fas fa-crown card-icon"></i>
+                    <div class="tv-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="tv-info-overlay">
+                        <span class="tv-seasons"><i class="fas fa-layer-group"></i> 4 Seasons</span>
+                    </div>
+                </div>
+                <div class="tv-info">
+                    <h3>Kingdom's Edge</h3>
+                    <p>Fantasy • <i class="fas fa-star"></i> 4.9</p>
+                </div>
+            </div>
+            <div class="tv-card" data-id="14">
+                <div class="tv-poster gradient-14">
+                    <i class="fas fa-laptop-code card-icon"></i>
+                    <div class="tv-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="tv-info-overlay">
+                        <span class="tv-seasons"><i class="fas fa-layer-group"></i> 3 Seasons</span>
+                    </div>
+                </div>
+                <div class="tv-info">
+                    <h3>Tech Giants</h3>
+                    <p>Drama • <i class="fas fa-star"></i> 4.7</p>
+                </div>
+            </div>
+            <div class="tv-card" data-id="15">
+                <div class="tv-poster gradient-15">
+                    <i class="fas fa-gavel card-icon"></i>
+                    <div class="tv-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="tv-info-overlay">
+                        <span class="tv-seasons"><i class="fas fa-layer-group"></i> 5 Seasons</span>
+                    </div>
+                </div>
+                <div class="tv-info">
+                    <h3>Crime Division</h3>
+                    <p>Crime • <i class="fas fa-star"></i> 4.8</p>
+                </div>
+            </div>
+            <div class="tv-card" data-id="16">
+                <div class="tv-poster gradient-16">
+                    <i class="fas fa-satellite card-icon"></i>
+                    <div class="tv-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="tv-info-overlay">
+                        <span class="tv-seasons"><i class="fas fa-layer-group"></i> 2 Seasons</span>
+                    </div>
+                </div>
+                <div class="tv-info">
+                    <h3>Space Colony</h3>
+                    <p>Sci-Fi • <i class="fas fa-star"></i> 4.6</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continue Watching Section -->
+    <section class="content-section">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fas fa-history"></i> Continue Watching</h2>
+        </div>
+        <div class="continue-grid">
+            <div class="continue-card">
+                <div class="continue-poster gradient-1">
+                    <i class="fas fa-robot card-icon"></i>
+                    <div class="continue-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="continue-info">
+                    <h4>Cyber Storm</h4>
+                    <div class="continue-progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                    </div>
+                    <p>45 min remaining</p>
+                </div>
+            </div>
+            <div class="continue-card">
+                <div class="continue-poster gradient-13">
+                    <i class="fas fa-crown card-icon"></i>
+                    <div class="continue-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="continue-info">
+                    <h4>Kingdom's Edge S4E3</h4>
+                    <div class="continue-progress">
+                        <div class="progress-bar" style="width: 30%"></div>
+                    </div>
+                    <p>35 min remaining</p>
+                </div>
+            </div>
+            <div class="continue-card">
+                <div class="continue-poster gradient-3">
+                    <i class="fas fa-meteor card-icon"></i>
+                    <div class="continue-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+                <div class="continue-info">
+                    <h4>Galaxy Warriors</h4>
+                    <div class="continue-progress">
+                        <div class="progress-bar" style="width: 80%"></div>
+                    </div>
+                    <p>20 min remaining</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-play-circle"></i>
+                        <span>StreamFlix</span>
+                    </div>
+                    <p>Your premium streaming destination for movies and TV shows.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Browse</h4>
+                        <a href="#">Movies</a>
+                        <a href="#">TV Shows</a>
+                        <a href="#">Kids</a>
+                        <a href="#">New Releases</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Help</h4>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Account</a>
+                        <a href="#">Devices</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StreamFlix Premium. All rights reserved. | Version 2.0</p>
+                <div class="footer-badges">
+                    <span class="app-badge"><i class="fab fa-apple"></i> App Store</span>
+                    <span class="app-badge"><i class="fab fa-google-play"></i> Google Play</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Movie Detail Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+            <div class="modal-poster" id="modalPoster"></div>
+            <div class="modal-info">
+                <h2 id="modalTitle">Movie Title</h2>
+                <div class="modal-meta" id="modalMeta"></div>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-buttons">
+                    <button class="btn-play"><i class="fas fa-play"></i> Play</button>
+                    <button class="btn-info"><i class="fas fa-plus"></i> My List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
