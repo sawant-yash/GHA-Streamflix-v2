@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: streamflix
-        image: kastrov/streamflix:v2
+        image: yash5030/streamflix:v2
         ports:
         - containerPort: 5000
